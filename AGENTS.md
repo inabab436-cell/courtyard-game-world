@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project architecture
+- Keep the courtyard as a Phaser 3 Canvas scene with a fixed 1672×941 world and separate pure world-geometry helpers, so rendering adapts to screens without changing gameplay coordinates.

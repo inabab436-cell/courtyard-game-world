@@ -1,0 +1,3 @@
+- [x] Add the unchanged courtyard artwork as a Phaser environment layer.
+- [x] Define resolution-independent floor, boundaries, depth, and perspective helpers.
+- [x] Verify mobile and desktop rendering, scene loading, tests, and preview diagnostics.
