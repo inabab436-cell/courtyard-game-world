@@ -2,6 +2,7 @@ import * as Phaser from "phaser";
 import courtyardArtwork from "@/assets/moonlit-courtyard.png.asset.json";
 import {
   getCourtyardBoundsAt,
+  getCourtyardCameraZoom,
   getCourtyardCharacterScale,
   getCourtyardDepth,
   isInsideCourtyard,
@@ -55,8 +56,8 @@ export class CourtyardScene extends Phaser.Scene {
   private layoutEnvironment() {
     if (!this.environment) return;
 
-    // Camera zoom fills portrait viewports without changing the artwork's world-space dimensions.
-    const zoom = Math.max(this.scale.width / WORLD.width, this.scale.height / WORLD.height);
+    // Landscape shows the complete artwork; portrait fills the viewport without stretching it.
+    const zoom = getCourtyardCameraZoom(this.scale.width, this.scale.height);
     this.environment.setScale(1).setPosition(WORLD.width / 2, WORLD.height / 2);
 
     const camera = this.cameras.main;

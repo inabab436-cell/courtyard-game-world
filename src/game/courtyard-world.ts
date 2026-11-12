@@ -11,6 +11,16 @@ export const WORLD = {
   depthScale: { far: 0.72, near: 1 },
 } as const;
 
+export function getCourtyardCameraZoom(viewportWidth: number, viewportHeight: number) {
+  const widthScale = viewportWidth / WORLD.width;
+  const heightScale = viewportHeight / WORLD.height;
+
+  // Show the entire courtyard in landscape; keep portrait screens filled by cropping the sides.
+  return viewportWidth >= viewportHeight
+    ? Math.min(widthScale, heightScale)
+    : Math.max(widthScale, heightScale);
+}
+
 export function getCourtyardBoundsAt(y: number) {
   const floor = WORLD.floor;
   const clampedY = Math.max(floor.top, Math.min(floor.bottom, y));

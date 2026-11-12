@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   getCourtyardBoundsAt,
+  getCourtyardCameraZoom,
   getCourtyardCharacterScale,
   getCourtyardDepth,
   isInsideCourtyard,
@@ -8,6 +9,10 @@ import {
 } from "@/game/courtyard-world";
 
 describe("courtyard world coordinates", () => {
+  it("fits the complete courtyard in landscape viewports", () => {
+    expect(getCourtyardCameraZoom(844, 390)).toBe(390 / WORLD.height);
+  });
+
   it("keeps the walkable floor inside its perspective boundaries", () => {
     expect(isInsideCourtyard(800, WORLD.floor.top)).toBe(true);
     expect(isInsideCourtyard(100, WORLD.floor.top)).toBe(false);
